@@ -6,16 +6,24 @@ using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
 
-namespace api
+using CloudServicePlatform.Api.Context;
+
+namespace CloudServicePlatform.Api
 {
-    public static class HttpExample
+    public class HttpExample
     {
+        private readonly CSPV2Context context;
+
+        public HttpExample(CSPV2Context _context)
+        {
+            context = _context;
+        }   
+
         [FunctionName("HttpExample")]
-        public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req,
-            ILogger log)
+        public async Task<IActionResult> Run([HttpTrigger(AuthorizationLevel.Anonymous, "get", "post", Route = null)] HttpRequest req, ILogger log)
         {
             log.LogInformation("C# HTTP trigger function processed a request.");
 
@@ -29,7 +37,7 @@ namespace api
                 ? "This HTTP triggered function executed successfully. Pass a name in the query string or in the request body for a personalized response."
                 : $"Hello, {name}. This HTTP triggered function executed successfully.";
 
-            return new OkObjectResult(responseMessage);
+            return new OkObjectResult(await context.Users.ToArrayAsync());
         }
     }
 }
