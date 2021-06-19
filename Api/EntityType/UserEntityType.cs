@@ -9,10 +9,10 @@ namespace CloudServicePlatform.Api.EntityType
     {
         public void Configure(EntityTypeBuilder<User> builder)
         {
-            builder.ToTable("aspnet_Users");
+            builder.ToTable("User");
             builder.HasKey(user => user.Id);
-            builder.Property(user => user.Id).IsRequired().HasColumnName("UserId");
-            builder.Property(user => user.UserName).IsRequired().HasColumnName("UserName");
+            builder.Property(user => user.Id).IsRequired().HasColumnName("Id");
+            builder.Property(user => user.UserName).IsRequired().HasColumnName("Name");
             builder.Property(user => user.LastActivityDate).HasColumnName("LastActivityDate");
         }
     }
