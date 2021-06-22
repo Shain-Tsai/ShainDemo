@@ -1,0 +1,21 @@
+{
+	"folders": [
+		{
+			"path": "WebApi"
+		},
+		{
+			"path": "WebSite"
+		}
+	],
+	"extensions": {
+		"recommendations": [
+			"ms-azuretools.vscode-azurefunctions"
+		]
+	},
+	"settings": {
+	},
+	"tasks": {
+		"version": "2.0.0",
+		"tasks": []
+	}
+}
