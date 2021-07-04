@@ -1,0 +1,12 @@
+{
+    "routes": [
+        {
+            "route": "/admin/*",
+            "allowedRoles": ["administrator"]
+        },
+        {
+            "route": "/login",
+            "rewrite": "/.auth/login/aad"
+        }
+    ]
+}
