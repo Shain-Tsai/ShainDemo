@@ -1,0 +1,24 @@
+$black: #000000;
+$oxford-blue: #14213D;
+$orange-web: #FCA311;
+$platinum: #E5E5E5;
+$white: #FFFFFF;
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 10px;
+}
+
+a {
+    text-decoration: none;
+}
+
+@mixin absolute-center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
